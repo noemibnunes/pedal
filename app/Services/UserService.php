@@ -2,8 +2,6 @@
 
 namespace App\Services;
 
-use App\Http\Requests\UserRequest;
-use App\Http\Resources\UserResource;
 use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\Auth;
