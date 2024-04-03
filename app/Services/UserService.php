@@ -27,20 +27,20 @@ class UserService
            'password' => bcrypt($request->senha)
         ]);
         
-        return "Cadastro realizado com sucesso!";
+        return "cadastro realizado com sucesso!";
     }
 
     public function login($request)
     {
         if ($request->email && $request->senha) {
             if (Auth::attempt(['email' => $request->email, 'password' => $request->senha])) {
-                return "Login com Sucesso!"; 
+                return "login com sucesso!"; 
             }
         } else {
-            throw new Exception("Insira seu email e a senha!"); 
+            throw new Exception("insira seu email e a senha"); 
         }
 
-        throw new Exception("Credenciais inválidas");
+        throw new Exception("e-mail ou senha inválida");
     }
 
 }
