@@ -2,7 +2,6 @@
 
 @section('content')
   <body id="login">
-    <class="login">
     <div class="titulo-bg">
         <div class="titulo container">
           <p class="font-2-l-b cor-5">escolha a bike que mais combina com você</p>
@@ -34,7 +33,7 @@
                 <label for="exampleInputPEmail">Email</label>
                 <input type="email" name="email" placeholder="email@email.com">
             </div>
-            <div class="form-group">
+            <div>
                 <label for="exampleInputPSenha">Senha</label>
                 <input type="password" name="senha" placeholder="senha">
                 <div class="recuperar-senha">

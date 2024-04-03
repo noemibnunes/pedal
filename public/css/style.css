@@ -29,9 +29,9 @@
 @import "./seguros/vantagens.css";
 @import "./seguros/perguntas.css";
 
-/* Contato */
-@import "./tela-login/login.css";
-@import "./contato/lojas.css";
+/* Login e cadastro */
+@import "./login-cadastro/login.css";
+@import "./login-cadastro/cadastro.css";
 
 /* Contato */
 @import "./orcamento/orcamento.css";

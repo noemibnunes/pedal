@@ -99,7 +99,7 @@
             <li>Suporte 24h</li>
             <li>Devolva ou troque em qualquer posto</li>
         </ul>
-        <a class="botao secundario" href="./orcamento.html?tipo=seguro&produto=prata">Inscreva-se</a>
+        <a class="botao secundario" href="#">Inscreva-se</a>
       </div>
 
       <div class="seguros-item">
@@ -113,7 +113,7 @@
             <li>Pode usar a bicicleta fora da cidade</li>
             <li>Muita economia</li>
         </ul>
-        <a class="botao" href="./orcamento.html?tipo=seguro&produto=ouro">Inscreva-se</a>
+        <a class="botao" href="#">Inscreva-se</a>
       </div>
     </div>
   </article>
