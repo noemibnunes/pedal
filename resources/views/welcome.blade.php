@@ -87,6 +87,25 @@
       </blockquote>
   </section>
 
+  <article class="planos-lista">
+    <h2 class="container font-1-xxl">Escolha o seu plano<span class="cor-p1">.</span></h2>
+
+    <ul>
+        @foreach($planos as $plano)
+            <li>
+                <strong>Tipo de plano:</strong> {{ $plano->tipo_plano }}<br>
+                <strong>Valor do plano:</strong> R$ {{ $plano->valor_plano }}<br>
+                <strong>Descrição:</strong> <br>
+                <ul>
+                    @foreach(explode(';', $plano->descricao) as $item)
+                        <li>{{ $item }}</li>
+                    @endforeach
+                </ul>
+            </li>
+        @endforeach
+    </ul>
+  </article>
+
   <article class="seguros-bg">
     <div class="seguros container">
       <h2 class="font-1-xxl cor-0">seguros<span class="cor-p1">.</span></h2>
