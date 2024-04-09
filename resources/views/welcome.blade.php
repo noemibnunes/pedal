@@ -87,30 +87,10 @@
       </blockquote>
   </section>
 
-  <article class="planos-lista">
-    <h2 class="container font-1-xxl">Escolha o seu plano<span class="cor-p1">.</span></h2>
-
-    <ul>
-        @foreach($planos as $plano)
-            <li>
-                <strong>Tipo de plano:</strong> {{ $plano->tipo_plano }}<br>
-                <strong>Valor do plano:</strong> R$ {{ $plano->valor_plano }}<br>
-                <strong>Descrição:</strong> <br>
-                <ul>
-                    @foreach(explode(';', $plano->descricao) as $item)
-                        <li>{{ $item }}</li>
-                    @endforeach
-                </ul>
-            </li>
-        @endforeach
-    </ul>
-  </article>
-
   <article class="seguros-bg">
     <div class="seguros container">
       <h2 class="font-1-xxl cor-0">planos<span class="cor-p1">.</span></h2>
       <div class="seguros-item">
- <!--    @foreach($planos as $plano) --> 
         <h3 class="font-1-xl cor-6">{{ $planos[0]->tipo_plano }}</h3>
           <span class="font-1-xl cor-4">R$ {{ $planos[0]->valor_plano }} <span class="font-1-xs cor-6">mensal</span></span>
             <ul class="font-2-m cor-4">
@@ -118,21 +98,17 @@
                 <li>{{ $item }}</li>
               @endforeach
             </ul>
-<!--       @endforeach --> 
         <a class="botao secundario" href="#">Inscreva-se</a>
       </div>
 
       <div class="seguros-item">
-      <h3 class="font-1-xl cor-0">ANUAL</h3>
-        <span class="font-1-xl cor-0">R$ 180 <span class="font-1-xs cor-6">anual</span></span>
+      <h3 class="font-1-xl cor-0">{{ $planos[1]->tipo_plano }}</h3>
+        <span class="font-1-xl cor-0">R$ {{ $planos[1]->valor_plano }} <span class="font-1-xs cor-6">anual</span></span>
           <ul class="font-2-m cor-0">
-            <li>Troque o modelo quando quiser</li>
-            <li>Assistência especial</li>
-            <li>Suporte 24h</li>
-            <li>Devolva ou troque em qualquer posto</li>
-            <li>Pode usar a bicicleta fora da cidade</li>
-            <li>Muita economia</li>
-        </ul>
+            @foreach(explode(';', $planos[1]->descricao) as $item)
+              <li>{{ $item }}</li>
+            @endforeach
+          </ul>
         <a class="botao" href="#">Inscreva-se</a>
       </div>
     </div>

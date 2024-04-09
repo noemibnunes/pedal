@@ -1,21 +1,49 @@
 @extends('base')
 
 @section('content')
-  <main class="">     
-    
-  <h1>Lista de Bicicletas Disponíveis</h1>
-
-    <ul>
-        @foreach($bicicletas as $bicicleta)
-            <li>
-                <strong>Modelo:</strong> {{ $bicicleta->modelo }}<br>
-                <strong>Disponibilidade:</strong> {{ $bicicleta->valor_aluguel ? 'Disponível' : Indisponível }}<br>
-                <strong>Valor:</strong> R$ {{ $bicicleta->valor_aluguel }}<br>
-                <strong>Quantidade:</strong> {{ $bicicleta->quantidades }}<br>
-                <strong>Tipo:</strong> {{ $bicicleta->tipo }}<br>
-                <img src="{{ $bicicleta->imagem }}" alt="{{ $bicicleta->modelo }}">
+<main>
+    <div class="titulo-bg">
+      <div class="titulo container">
+        <p class="font-2-l-b cor-5">Escolha a melhor para você</p>
+        <h1 class="font-1-xxl cor-0">nossas bicicletas<span class="cor-p1">.</span></h1>
+      </div>
+    </div>
+      
+  @foreach($bicicletas as $bicicleta)
+    <div class="bicicletas container">
+      <div class="bicicletas-imagem">
+        <img src="{{ $bicicleta->imagem }}" alt="{{ $bicicleta->modelo }}">
+        <span class="font-2-m cor-0 preco">R$ {{ $bicicleta->valor_aluguel }}/h</span>
+        <div class="disponibilidade">
+          <div class="estoque">
+            <img src="./img/icones/estoque.svg" alt="">
+            <span>{{ $bicicleta->valor_aluguel ? 'Disponível' : Indisponível }}</span>
+          </div>
+          <div class="entrega">
+            <img src="./img/icones/entrega.svg" alt="">
+            <span>{{ $bicicleta->quantidades }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="bicicletas-conteudo">
+        <h2 class="font-1-xl">{{ $bicicleta->modelo }}</h2>
+        <p class="font-2-s cor-8">{{ $bicicleta->tipo }}</p>
+        <ul class="font-1-m cor-8">
+          <li>
+            <img src="./img/icones/carbono.svg" alt="">
+            Fibra de Carbono
+          </li>
+          <li>
+            <img src="./img/icones/velocidade.svg" alt="">
+            20 km/h
             </li>
-        @endforeach
-    </ul>
-  </main>
+          <li>
+            <img src="./img/icones/rastreador.svg" alt="">
+            Rastreador
+          </li>
+          </ul>
+        <a class="botao" style="color: #fff" href="./bicicletas/nimbus.html">Saiba mais</a>
+      </div>
+    </div>
+  @endforeach
 @endsection()

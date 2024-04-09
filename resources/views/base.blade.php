@@ -28,7 +28,8 @@
 
       <nav aria-label="primaria">
         <ul class="header-menu font-1-m cor-0">
-        <li><a href="{{ route('cadastro') }}">Cadastrar</a></li>
+          <li><a href="{{ route('bicicletas') }}">Bicicletas</a></li>
+          <li><a href="{{ route('cadastro') }}">Cadastrar</a></li>
           <li><a href="{{ route('login') }}">Login</a></li> 
         </ul>
       </nav>
