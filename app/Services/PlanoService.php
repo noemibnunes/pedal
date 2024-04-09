@@ -12,7 +12,7 @@ class PlanoService
     public function listarPlanosDisponiveis()
     {
         $client = new Client();
-        $response = $client->get('http://127.0.0.1:8080/planos');
+        $response = $client->get('http://127.0.0.1:8081/planos');
 
         if ($response->getStatusCode() === 200) {
             $data = json_decode($response->getBody()->getContents(), true);

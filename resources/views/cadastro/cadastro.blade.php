@@ -19,6 +19,11 @@
             @if ($errors->has('success'))
                 <div class="alert alert-success col-2">
                   {{ $errors->first('success') }}
+                  <script>
+                    setTimeout(function() {
+                      window.location.href = "{{ route('login') }}";
+                    }, 2000);
+                </script>
                 </div>
               @else
                 @if ($errors->any())

@@ -108,16 +108,17 @@
 
   <article class="seguros-bg">
     <div class="seguros container">
-      <h2 class="font-1-xxl cor-0">seguros<span class="cor-p1">.</span></h2>
+      <h2 class="font-1-xxl cor-0">planos<span class="cor-p1">.</span></h2>
       <div class="seguros-item">
-      <h3 class="font-1-xl cor-6">MENSAL</h3>
-        <span class="font-1-xl cor-4">R$ 120 <span class="font-1-xs cor-6">mensal</span></span>
-          <ul class="font-2-m cor-4">
-            <li>Troque o modelo até duas vezes no mês</li>
-            <li>Assistência técnica</li>
-            <li>Suporte 24h</li>
-            <li>Devolva ou troque em qualquer posto</li>
-        </ul>
+ <!--    @foreach($planos as $plano) --> 
+        <h3 class="font-1-xl cor-6">{{ $planos[0]->tipo_plano }}</h3>
+          <span class="font-1-xl cor-4">R$ {{ $planos[0]->valor_plano }} <span class="font-1-xs cor-6">mensal</span></span>
+            <ul class="font-2-m cor-4">
+              @foreach(explode(';', $planos[0]->descricao) as $item)
+                <li>{{ $item }}</li>
+              @endforeach
+            </ul>
+<!--       @endforeach --> 
         <a class="botao secundario" href="#">Inscreva-se</a>
       </div>
 

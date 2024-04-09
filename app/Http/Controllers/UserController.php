@@ -30,8 +30,7 @@ class UserController extends Controller
     {
         try {
             $mensagem = $this->userService->cadastro($request);
-        //    return redirect()->back()->withErrors(['success' => $mensagem]);
-            return redirect()->route('login');
+            return redirect()->back()->withErrors(['success' => $mensagem]);
         } catch (Exception $exception) {
             return response()->json(['errors' => $exception->getMessage()], 400);
         }
