@@ -11,7 +11,7 @@
         <h1 class="font-1-xxl cor-0 fadeInDown" data-anime="200">Pedale pela 
           cidade<span class="cor-0">.</span></h1>
         <p class="font-2-l cor-5 fadeInDown" data-anime="400">Bicicletas de alta qualidade,  pensadas para garantir conforto e segurança para o cliente. Explore o mundo na sua velocidade com a Pedal.</p>
-        <a class="botao fadeInDown" data-anime="600" href="./bicicletas.html">Selecione a sua</a>
+        <a class="botao fadeInDown" data-anime="600" href="{{ route('bicicletas') }}">Selecione a sua</a>
       </div>
     </div>
   </main>
@@ -98,7 +98,7 @@
                 <li>{{ $item }}</li>
               @endforeach
             </ul>
-        <a class="botao secundario" href="#">Inscreva-se</a>
+        <a class="botao secundario" href="{{ route('cadastro') }}">Inscreva-se</a>
       </div>
 
       <div class="seguros-item">
@@ -109,7 +109,7 @@
               <li>{{ $item }}</li>
             @endforeach
           </ul>
-        <a class="botao" href="#">Inscreva-se</a>
+        <a class="botao" href="{{ route('cadastro') }}">Inscreva-se</a>
       </div>
     </div>
   </article>

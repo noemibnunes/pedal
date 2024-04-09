@@ -12,7 +12,7 @@
   @foreach($bicicletas as $bicicleta)
     <div class="bicicletas container">
       <div class="bicicletas-imagem">
-        <img src="{{ $bicicleta->imagem }}" alt="{{ $bicicleta->modelo }}">
+        <img src="{{ $bicicleta->imagem }}" alt="{{ $bicicleta->modelo }}" width="100%" height="100%">
         <span class="font-2-m cor-0 preco">R$ {{ $bicicleta->valor_aluguel }}/h</span>
         <div class="disponibilidade">
           <div class="estoque">
@@ -27,7 +27,7 @@
       </div>
       <div class="bicicletas-conteudo">
         <h2 class="font-1-xl">{{ $bicicleta->modelo }}</h2>
-        <p class="font-2-s cor-8">{{ $bicicleta->tipo }}</p>
+        <p class="font-2-s cor-8">{{ $bicicleta->descricao }}</p>
         <ul class="font-1-m cor-8">
           <li>
             <img src="./img/icones/carbono.svg" alt="">
@@ -42,7 +42,7 @@
             Rastreador
           </li>
           </ul>
-        <a class="botao" style="color: #fff" href="./bicicletas/nimbus.html">Saiba mais</a>
+        <a class="botao" style="color: #fff" href="{{ route('cadastro') }}">Saiba mais</a>
       </div>
     </div>
   @endforeach

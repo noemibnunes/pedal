@@ -45,7 +45,7 @@
         <h3 class="font-2-l-b cor-0">Contato</h3>
         <ul class="font-2-m cor-5">
           <li><a href="tel:+558399999999">+55 83 9999-9999</a></li>
-          <li><a href="mailto:contato@bikcraft.com">contato@pedal.com</a></li>
+          <li><a href="mailto:contato@pedal.com">contato@pedal.com</a></li>
           <li>Av Vigário Calixto, 3000 - Catolé</li>
           <li>Campina Grande - PB</li>
         </ul>
