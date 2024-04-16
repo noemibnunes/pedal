@@ -102,3 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
     habilitarEdicao();
   });
 });
+
+document.querySelector('#imagem').addEventListener('change', function () {
+  document.querySelector('.text-file').textContent = this.files[0].name;
+})

@@ -39,13 +39,15 @@ class UserService
     {
         if ($request->email && $request->senha) {
             if (Auth::attempt(['email' => $request->email, 'password' => $request->senha])) {
-                return "login com sucesso!"; 
+                $user = User::where('email', $request->email)->first();
+                Auth::login($user);
+                return "Login com Sucesso!"; 
             }
         } else {
-            throw new Exception("insira seu email e a senha"); 
+            throw new Exception("insira seu email e a senha!"); 
         }
 
-        throw new Exception("e-mail ou senha inválida");
+        throw new Exception("Credenciais inválidas");
     }
 
     public function perfilView()

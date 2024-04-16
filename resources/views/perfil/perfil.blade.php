@@ -82,11 +82,12 @@
             </select>
           </div>
           <div class="col-2">
-            <input type="file" id="imagem" >
-            <label class="label-file" for="imagem">
-              <span class="text-file">Selecionar imagem</span>
-              <span>Procurar</span>
-            </label>
+            <input type="file" id="imagem" name="imagem_perfil">
+              <label class="label-file" for="imagem">
+                <span class="text-file">Selecionar imagem</span>
+                <span>Procurar</span>
+              </label>
+            </input>
           </div>
           <button type="button" class="botao btn-login col-2" id="editarPerfil">Editar Perfil</button>
           <button type="submit" class="botao btn-login col-2" id="salvarPerfil">Salvar Perfil</button>
