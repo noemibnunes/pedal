@@ -16,6 +16,11 @@
             @if ($errors->has('success'))
                 <div class="alert alert-success">
                   {{ $errors->first('success') }}
+                  <script>
+                    setTimeout(function() {
+                      window.location.href = "{{ route('perfil') }}";
+                    }, 2000);
+                  </script>
                 </div>
                 @else
                 @if ($errors->any())

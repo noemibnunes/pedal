@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserRequest;
-use App\Services\UserService;
 use Exception;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Services\UserService;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -43,6 +44,44 @@ class UserController extends Controller
             return redirect()->back()->withErrors(['success' => $mensagem]);
         } catch (Exception $exception) {
             return redirect()->back()->withErrors(['error' => $exception->getMessage()]);
+        }
+    }
+
+    public function perfilView() 
+    {
+        try {
+            return $this->userService->perfilView();
+        } catch (Exception $exception) {
+            return response()->json(['errors' => $exception->getMessage()], 400);
+        }
+    }
+
+    public function updatePerfil(Request $request)
+    {
+        try {
+            $mensagem = $this->userService->updatePerfil($request);
+            return redirect()->back()->withErrors(['success' => $mensagem]);
+        } catch (Exception $exception) {
+            return response()->json(['errors' => $exception->getMessage()], 400);
+        }
+    }
+
+    public function enderecoView() 
+    {
+        try {
+            return $this->userService->enderecoView();
+        } catch (Exception $exception) {
+            return response()->json(['errors' => $exception->getMessage()], 400);
+        }
+    }
+
+    public function updateEndereco(Request $request)
+    {
+        try {
+            $mensagem = $this->userService->updateEndereco($request);
+            return redirect()->back()->withErrors(['success' => $mensagem]);
+        } catch (Exception $exception) {
+            return response()->json(['errors' => $exception->getMessage()], 400);
         }
     }
 }

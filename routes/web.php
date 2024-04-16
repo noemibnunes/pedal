@@ -17,3 +17,10 @@ Route::post('/login-usuario', [UserController::class, 'login'])->name('login-usu
 
 Route::get('/bicicletas', [BicicletaController::class, 'all'])->name('bicicletas');
 Route::get('/', [PlanoController::class, 'all'])->name('planos');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/perfil', [UserController::class, 'perfilView'])->name('perfil');
+    Route::get('/endereco', [UserController::class, 'enderecoView'])->name('endereco-view');
+    Route::put('/editar-endereco', [UserController::class, 'updateEndereco'])->name('editar-endereco');
+    Route::put('/editar-perfil', [UserController::class, 'updatePerfil'])->name('editar-perfil');
+});

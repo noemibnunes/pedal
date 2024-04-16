@@ -45,5 +45,6 @@
         <a class="botao" style="color: #fff" href="{{ route('cadastro') }}">Saiba mais</a>
       </div>
     </div>
+</main>
   @endforeach
 @endsection()

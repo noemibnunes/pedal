@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Endereco;
+use App\Models\Telefone;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -18,9 +20,12 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'sobrenome',
         'cpf',
         'email',
         'password',
+        'imagem_perfil',
+        'data_nascimento'
     ];
 
     /**
@@ -45,4 +50,18 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    ######################
+    # RELACIONAMENTOS
+    ######################
+    public function telefone(): MorphOne
+    {
+        return $this->morphOne(Telefone::class, 'telefonable');
+    }
+
+    public function endereco(): MorphOne
+    {
+        return $this->morphOne(Endereco::class, 'endereable');
+    }
+
 }

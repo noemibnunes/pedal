@@ -65,3 +65,33 @@ galeria.forEach(eventosGaleria);
 if (window.SimpleAnime) {
   new SimpleAnime();
 }
+
+// PERFIL
+document.addEventListener('DOMContentLoaded', function() {
+  function habilitarEdicao() {
+    document.querySelectorAll('input[readonly]').forEach(function(input) {
+      input.removeAttribute('readonly');
+    });
+    document.getElementById('editarPerfil').classList.add('d-none');
+    document.getElementById('salvarPerfil').classList.remove('d-none');
+  }
+
+  document.getElementById('editarPerfil').addEventListener('click', function() {
+    habilitarEdicao();
+  });
+});
+
+// ENDERECO
+document.addEventListener('DOMContentLoaded', function() {
+  function habilitarEdicao() {
+    document.querySelectorAll('input[readonly]').forEach(function(input) {
+      input.removeAttribute('readonly');
+    });
+    document.getElementById('editarEndereco').classList.add('d-none');
+    document.getElementById('salvarEndereco').classList.remove('d-none');
+  }
+
+  document.getElementById('editarEndereco').addEventListener('click', function() {
+    habilitarEdicao();
+  });
+});

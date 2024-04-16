@@ -28,6 +28,12 @@ class UserRequest extends FormRequest
                 'min:3',  
                 'max:255', 
             ],
+            'sobrenome' => [
+                'required', 
+                'string',  
+                'min:3',  
+                'max:255', 
+            ],
             'cpf' => [
                 'required', 
                 'string',   
@@ -40,10 +46,19 @@ class UserRequest extends FormRequest
                 'unique:users,email', 
                 'max:255', 
             ],
+            'email_confirmation' => [
+                'required',
+                'email',
+                'same:email'
+            ],
             'senha' => [
                 'required', 
                 'string',  
                 'min:8',  
+            ],
+            'senha_confirmation' => [
+                'required',
+                'same:senha'
             ],
         ];
     }
@@ -60,6 +75,10 @@ class UserRequest extends FormRequest
             'nome.string' => 'O nome deve ser um texto.',
             'nome.min' => 'O nome deve ter pelo menos 3 caracteres.',
             'nome.max' => 'O nome deve ter no máximo 255 caracteres.',
+            'sobrenome.required' => 'O sobrenome é obrigatório.',
+            'sobrenome.string' => 'O sobrenome deve ser um texto.',
+            'sobrenome.min' => 'O sobrenome deve ter pelo menos 3 caracteres.',
+            'sobrenome.max' => 'O sobrenome deve ter no máximo 255 caracteres.',
             'cpf.required' => 'O CPF é obrigatório.',
             'cpf.string' => 'O CPF deve ser um texto.',
             'cpf.unique' => 'O CPF já está em uso.',
@@ -68,9 +87,13 @@ class UserRequest extends FormRequest
             'email.email' => 'O e-mail deve ser um endereço válido.',
             'email.unique' => 'O e-mail já está em uso.',
             'email.max' => 'O e-mail deve ter no máximo 255 caracteres.',
+            'email_confirmation.required' => 'A confirmação do e-mail é obrigatório.',
+            'email_confirmation.same' => 'Os e-mails digitados não coincidem.',
             'senha.required' => 'A senha é obrigatória.',
             'senha.string' => 'A senha deve ser um texto.',
             'senha.min' => 'A senha deve ter no mínimo 8 caracteres.',
+            'senha_confirmation.required' => 'A confirmação da senha é obrigatória.',
+            'senha_confirmation.same' => 'As senhas digitadas não coincidem.'
         ];
     }
 }

@@ -43,7 +43,7 @@
               <input type="text" class="form-control" name="nome" placeholder="Maria">
             </div>
             <div>
-              <label for="exampleInputNome">Sobrenome</label>
+              <label for="exampleInputSobrenome">Sobrenome</label>
               <input type="text" class="form-control" name="sobrenome" placeholder="Silva">
             </div>
             <div class="col-2">
@@ -56,7 +56,7 @@
             </div>
             <div class="col-2">
               <label for="email">Repetir E-mail</label>
-              <input type="email" class="form-control" name="email" placeholder="example@email.com">
+              <input type="email" class="form-control" name="email_confirmation" placeholder="example@email.com">
             </div>
             <div class="col-2">
               <label for="exampleInputPSenha">Senha</label>
@@ -64,7 +64,7 @@
             </div>
             <div class="col-2">
               <label for="exampleInputPSenha">Repetir Senha</label>
-              <input type="password" class="form-control" name="senha" placeholder="repetir senha">
+              <input type="password" class="form-control" name="senha_confirmation" placeholder="repetir senha">
             </div>
             <button type="submit" class="botao btn-login col-2" onclick="{{ route('login') }}">Cadastrar</button>
             
