@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Plano;
 use App\Models\Endereco;
 use App\Models\Telefone;
 use Illuminate\Notifications\Notifiable;
@@ -25,7 +26,8 @@ class User extends Authenticatable
         'email',
         'password',
         'imagem_perfil',
-        'data_nascimento'
+        'data_nascimento',
+        'plano_id'
     ];
 
     /**
@@ -62,6 +64,11 @@ class User extends Authenticatable
     public function endereco(): MorphOne
     {
         return $this->morphOne(Endereco::class, 'endereable');
+    }
+
+    public function plano()
+    {
+        return $this->belongsTo(Plano::class);
     }
 
 }

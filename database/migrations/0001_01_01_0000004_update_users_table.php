@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('imagem_perfil')->nullable();
             $table->date('data_nascimento')->nullable();
             $table->string('sobrenome')->nullable();
+            $table->unsignedBigInteger('plano_id')->nullable();
+            $table->foreign('plano_id')->references('id')->on('plans')->onDelete('set null');
         });
     }
 
@@ -29,6 +31,9 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('imagem_perfil');
+            $table->dropColumn('data_nascimento');
+            $table->dropColumn('sobrenome');
+            $table->dropForeign(['plano_id']);
         });
     }
 };

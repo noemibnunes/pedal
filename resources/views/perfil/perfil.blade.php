@@ -24,7 +24,7 @@
       </div>
 
       <div class="col-md-9">
-        <form action="{{ route('editar-perfil') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('editar-perfil') }}" method="POST" enctype="multipart/form-data" class="form-two">
             @if ($errors->has('success'))
             <div class="alert alert-success">
               {{ $errors->first('success') }}
@@ -44,40 +44,52 @@
           @csrf
           @method('PUT')
 
-          <div class="mb-3">
+          <div class="col-2">
             <label for="nome" class="form-label">Nome</label>
             <input type="text" class="form-control" id="nome" name="nome" value="{{ $user->name }}" readonly>
           </div>
-          <div class="mb-3">
+          <div class="col-2">
             <label for="sobrenome" class="form-label">Sobrenome</label>
             <input type="text" class="form-control" id="sobrenome" name="sobrenome" value="{{ $user->sobrenome }}" readonly>
           </div>
-          <div class="mb-3">
+          <div class="col-2">
             <label for="cpf" class="form-label">CPF</label>
             <input type="text" class="form-control" id="cpf" name="cpf" value="{{ $user->cpf }}" readonly>
           </div>
-          <div class="mb-3">
+          <div class="col-2">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" readonly>
           </div>
-          <div class="mb-3">
+          <div class="col-2">
             <label for="data_nascimento" class="form-label">Data de Nascimento</label>
-            <input type="text" class="form-control" id="data_nascimento" name="data_nascimento" value="{{ $user->data_nascimento ? \Carbon\Carbon::parse($user->data_nascimento)->format('d/m/Y') : 'Não informado' }}" readonly>
+            <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" value="{{ $user->data_nascimento }}" readonly>
           </div>
-          <div class="mb-3">
+          <div class="col-2">
             <label for="telefone" class="form-label">Telefone</label>
             <input type="text" class="form-control" id="telefone" name="telefone" value="{{ $user->telefone->telefone ?? 'Não informado'}}" readonly>
           </div>
-          <div class="mb-3">
+          <div class="col-2">
             <label for="celular" class="form-label">Celular</label>
             <input type="text" class="form-control" id="celular" name="celular" value="{{ $user->telefone->celular ?? 'Não informado'}}" readonly>
           </div>
-          <div class="form-group">
-              <label for="imagem_perfil" class="form-label">Alterar foto de perfil</label>
-              <input type="file" name="imagem_perfil" class="form-control" placeholder="Imagem">
+          <div class="col-2">
+            <label for="plano" class="form-label">Plano</label>
+            <select class="form-select" id="plano" name="plano" disabled>
+                <option value="">Selecione</option>
+                @foreach ($planos as $plano)
+                    <option value="{{ $plano->id }}" {{ $user->plano_id == $plano->id ? 'selected' : '' }}>{{ $plano->tipo_plano }}</option>
+                @endforeach
+            </select>
           </div>
-          <button type="button" class="btn btn-primary" id="editarPerfil">Editar Perfil</button>
-          <button type="submit" class="btn btn-success d-none" id="salvarPerfil">Salvar Perfil</button>
+          <div class="col-2">
+            <input type="file" id="imagem" >
+            <label class="label-file" for="imagem">
+              <span class="text-file">Selecionar imagem</span>
+              <span>Procurar</span>
+            </label>
+          </div>
+          <button type="button" class="botao btn-login col-2" id="editarPerfil">Editar Perfil</button>
+          <button type="submit" class="botao btn-login col-2" id="salvarPerfil">Salvar Perfil</button>
         </form>
       </div>
     </div>

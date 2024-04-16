@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -22,5 +23,12 @@ class Plano extends Model
         'descricao',
         'user_id'
     ];
-
+    
+    ######################
+    # RELACIONAMENTOS
+    ######################
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

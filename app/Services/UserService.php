@@ -5,6 +5,7 @@ namespace App\Services;
 use Exception;
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Plano;
 use App\Models\Endereco;
 use App\Models\Telefone;
 use Illuminate\Support\Facades\Auth;
@@ -50,7 +51,8 @@ class UserService
     public function perfilView()
     {
         $user = Auth::user();
-        return view('perfil.perfil', ['user' => $user]);
+        $planos = Plano::all();
+        return view('perfil.perfil', ['user' => $user, 'planos' => $planos]);
     }
 
     public function updatePerfil($request)
@@ -62,22 +64,26 @@ class UserService
         $user->cpf = $request->cpf;
         $user->email = $request->email;
         $user->password = bcrypt($request->senha);
+        
+        $user->data_nascimento = $request->data_nascimento;
+        
 
-        $data_nascimeneto = Carbon::createFromFormat('d/m/Y', $request->data_nascimento)->format('Y-m-d');
-        $user->data_nascimento = $data_nascimeneto;
+        $user->plano_id = $request->plano;
 
         if ($request->hasFile('imagem_perfil')) {
             $imagem_perfil = $request->file('imagem_perfil')->store('fotos', 'public');
             $user->imagem_perfil = $imagem_perfil;
         }
 
-        $user->telefone()->updateOrCreate(
-            ['telefonable_id' => $user->id],
-            [
-                'telefone' => $request->telefone,
-                'celular' => $request->celular
-            ]
-        );
+        if($request->telefone || $request->celular) {
+            $user->telefone()->updateOrCreate(
+                ['telefonable_id' => $user->id],
+                [
+                    'telefone' => $request->telefone,
+                    'celular' => $request->celular
+                ]
+            );
+        }
 
         $user->save();
 

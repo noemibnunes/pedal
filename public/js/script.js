@@ -71,7 +71,14 @@ document.addEventListener('DOMContentLoaded', function() {
   function habilitarEdicao() {
     document.querySelectorAll('input[readonly]').forEach(function(input) {
       input.removeAttribute('readonly');
+      if (input.value === 'Não informado') {
+        input.value = ''; 
+      }
     });
+
+    var selectPlano = document.getElementById('plano');
+    selectPlano.removeAttribute('disabled');
+
     document.getElementById('editarPerfil').classList.add('d-none');
     document.getElementById('salvarPerfil').classList.remove('d-none');
   }
