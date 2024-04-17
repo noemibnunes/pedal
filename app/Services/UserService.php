@@ -32,7 +32,7 @@ class UserService
            'password' => bcrypt($request->senha)
         ]);
         
-        return "cadastro realizado com sucesso!";
+        return "Cadastro realizado com sucesso!";
     }
 
     public function login($request)
@@ -77,15 +77,16 @@ class UserService
             $user->imagem_perfil = $imagem_perfil;
         }
 
-        if($request->telefone || $request->celular) {
-            $user->telefone()->updateOrCreate(
-                ['telefonable_id' => $user->id],
-                [
-                    'telefone' => $request->telefone,
-                    'celular' => $request->celular
-                ]
-            );
-        }
+        $telefone = $request->telefone ?: $request->celular;
+        $celular = $request->celular ?: $request->telefone;
+
+        $user->telefone()->updateOrCreate(
+            ['telefonable_id' => $user->id],
+            [
+                'telefone' => $telefone,
+                'celular' => $celular
+            ]
+        );
 
         $user->save();
 
@@ -115,6 +116,12 @@ class UserService
         );
 
         return "Endereço atualizado com sucesso!";
+    }
+
+    public function logout($request)
+    {
+        Auth::logout();
+        return redirect()->route('/'); 
     }
 
 }

@@ -5,15 +5,24 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
+        <div class="card">
+            @if ($user->imagem_perfil)
+              <img src="{{ asset('storage/' .$user->imagem_perfil) }}" alt="Foto do perfil" class="card-img">
+            @else
+              <img src="{{ asset('img/icones/user.jpg') }}" alt="Foto do perfil" class="card-img">
+            @endif
+          </div>
 
-        <div class="mt-3">
-          <h5>Meu perfil</h5>
-            <ul class="list-unstyled">
-              <li><a href="{{ route('endereco-view') }}">Endereço</a></li>
-              <li><a href="#">Cadastro de Cartão</a></li>
-              <li><a href="#">Histórico de aluguel</a></li>
-            </ul>
-        </div>
+          <div class="mt-3">
+              <a href="{{ route('perfil') }}">
+                <h5> {{ $user->name}} {{ $user->sobrenome }} </h5>
+              </a>
+              <ul class="list-unstyled">
+                <li><a href="{{ route('endereco-view') }}" style="color: #4e6c50; font-weight: bold;">Meu Endereço</a></li>
+                <li><a href="#">Meus Cartões</a></li>
+                <li><a href="#">Meu Histórico de aluguel</a></li>
+              </ul>
+          </div>
       </div>
 
       <div class="col-md-9">

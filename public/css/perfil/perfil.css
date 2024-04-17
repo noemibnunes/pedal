@@ -1,0 +1,26 @@
+.col-md-3 {
+    float: left;
+    padding: 20px;
+    width: 50%;
+}
+
+.card-img {
+    border-radius: 20% !important;
+    width: 40%; 
+}
+
+.col-md-9 {
+    margin-bottom: 20px; 
+    padding: 20px; 
+}
+
+.list-unstyled li {
+    margin-bottom: 10px; 
+  }
+  
+  .list-unstyled li a:hover {
+    color: var(--cor-p2); 
+  }
+  
+  
+  

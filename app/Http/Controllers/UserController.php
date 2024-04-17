@@ -84,4 +84,13 @@ class UserController extends Controller
             return response()->json(['errors' => $exception->getMessage()], 400);
         }
     }
+
+    public function logout(Request $request)
+    {
+        try {
+           return $this->userService->logout($request);
+        } catch (Exception $exception) {
+            return redirect()->back()->withErrors(['error' => $exception->getMessage()]);
+        }
+    }
 }

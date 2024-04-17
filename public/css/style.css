@@ -41,3 +41,6 @@
 
 /* Login */
 @import "./login/login.css";
+
+/* Perfil */
+@import "./perfil/perfil.css";

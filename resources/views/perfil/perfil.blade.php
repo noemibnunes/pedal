@@ -14,11 +14,11 @@
         </div>
 
         <div class="mt-3">
-          <h5>Meu perfil</h5>
+          <h5> {{ $user->name}} {{ $user->sobrenome }} </h5>
             <ul class="list-unstyled">
-              <li><a href="{{ route('endereco-view') }}">Endereço</a></li>
-              <li><a href="#">Cadastro de Cartão</a></li>
-              <li><a href="#">Histórico de aluguel</a></li>
+              <li><a href="{{ route('endereco-view') }}">Meu Endereço</a></li>
+              <li><a href="#">Meus Cartões</a></li>
+              <li><a href="#">Meu Histórico de aluguel</a></li>
             </ul>
         </div>
       </div>
