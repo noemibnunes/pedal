@@ -103,6 +103,31 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+// CARTAO
+document.addEventListener('DOMContentLoaded', function() {
+  function habilitarEdicao() {
+    document.querySelectorAll('input[readonly]').forEach(function(input) {
+      input.removeAttribute('readonly');
+      if (input.value === 'Não informado') {
+        input.value = ''; 
+      }
+    });
+
+    var selectTipoCartao = document.getElementById('tipo_cartao');
+    var selectBandeiraCartao = document.getElementById('bandeira_cartao');
+
+    selectTipoCartao.removeAttribute('disabled');
+    selectBandeiraCartao.removeAttribute('disabled');
+
+    document.getElementById('editarCartao').classList.add('d-none');
+    document.getElementById('salvarCartao').classList.remove('d-none');
+  }
+
+  document.getElementById('editarCartao').addEventListener('click', function() {
+    habilitarEdicao();
+  });
+});
+
 document.querySelector('#imagem').addEventListener('change', function () {
   document.querySelector('.text-file').textContent = this.files[0].name;
 })

@@ -1,0 +1,73 @@
+.cartoes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.cartao {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+    
+    h2 {
+        margin-top: 0;
+    }
+
+    p {
+        margin: 10px 0;
+    }
+}
+
+.form-two input[type="month"],
+select  {
+    font: 400 1rem/1.5 "Roboto", sans-serif;
+    background: var(--cor-1);
+    border: 1px solid var(--cor-2);
+    padding: 12px;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-two input[type="month"]:focus,
+select:focus {
+    outline: none;
+    border-color: var(--cor-p1);
+    background: var(--cor-0);
+    box-shadow: 0 0 0 2px var(--cor-p1);
+}
+
+.container-cadastro {
+    display: flex;
+    justify-content: right;
+}
+
+.btn-cadastro {
+    background-color: var(--cor-p4);
+    border-radius: 4px;
+    padding: 10px 10px;
+    border: solid 1px var(--cor-p4);
+    transition: 0.4s ease;
+    margin-top: 15px;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .btn-cadastro:hover {
+    background-color: var(--cor-p2);
+  }
+  
+  .btn-cadastro img {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .btn-view {
+    display: flex;
+    justify-content: right;
+}

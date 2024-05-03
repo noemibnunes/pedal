@@ -1,7 +1,6 @@
 @extends('base')
 
 @section('content')
-<body id="perfil">
   <div class="container">
     <div class="row">
       <div class="col-md-3">
@@ -17,7 +16,7 @@
           <h5> {{ $user->name}} {{ $user->sobrenome }} </h5>
             <ul class="list-unstyled">
               <li><a href="{{ route('endereco-view') }}">Meu Endereço</a></li>
-              <li><a href="#">Meus Cartões</a></li>
+              <li><a href="{{ route('cartoes-cadastrados') }}">Meus Cartões</a></li>
               <li><a href="#">Meu Histórico de aluguel</a></li>
             </ul>
         </div>

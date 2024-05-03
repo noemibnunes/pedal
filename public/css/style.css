@@ -44,3 +44,6 @@
 
 /* Perfil */
 @import "./perfil/perfil.css";
+
+/* Cartões */
+@import "./cartao/cartao-lista.css";

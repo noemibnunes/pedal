@@ -1,12 +1,11 @@
 .col-md-3 {
     float: left;
     padding: 20px;
-    width: 50%;
 }
 
 .card-img {
     border-radius: 20% !important;
-    width: 40%; 
+    width: 50%; 
 }
 
 .col-md-9 {

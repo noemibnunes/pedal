@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PlanoController;
+use App\Http\Controllers\CartaoController;
 use App\Http\Controllers\BicicletaController;
 
 // Route::get('/', function () {
@@ -25,4 +26,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/endereco', [UserController::class, 'enderecoView'])->name('endereco-view');
     Route::put('/editar-endereco', [UserController::class, 'updateEndereco'])->name('editar-endereco');
     Route::put('/editar-perfil', [UserController::class, 'updatePerfil'])->name('editar-perfil');
+
+    Route::get('/cartoes', [CartaoController::class, 'all'])->name('cartoes-cadastrados');
+    Route::get('/cadastro-cartao', [CartaoController::class, 'cadastroCartaoView'])->name('cadastro-cartao');
+    Route::post('/cadastrar-cartao', [CartaoController::class, 'cadastrarCartao'])->name('cadastrar-cartao');
+    Route::get('/cartao/{id}', [CartaoController::class, 'cartaoView'])->name('cartao-view');
+    Route::put('/editar-cartao/{id}', [CartaoController::class, 'editarCartao'])->name('editar-cartao');
+    
 });

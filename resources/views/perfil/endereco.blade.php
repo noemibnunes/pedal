@@ -1,7 +1,6 @@
 @extends('base')
 
 @section('content')
-<body id="perfil">
   <div class="container">
     <div class="row">
       <div class="col-md-3">
@@ -19,7 +18,7 @@
               </a>
               <ul class="list-unstyled">
                 <li><a href="{{ route('endereco-view') }}" style="color: #4e6c50; font-weight: bold;">Meu Endereço</a></li>
-                <li><a href="#">Meus Cartões</a></li>
+                <li><a href="{{ route('cartoes-cadastrados') }}">Meus Cartões</a></li>
                 <li><a href="#">Meu Histórico de aluguel</a></li>
               </ul>
           </div>
@@ -72,7 +71,7 @@
           </div>
         
           <button type="button" class="botao btn-login col-2" id="editarEndereco">Editar Endereço</button>
-          <button type="submit" class="botao btn-login col-2"" id="salvarEndereco">Salvar Endereço</button>
+          <button type="submit" class="botao btn-login col-2" id="salvarEndereco">Salvar Endereço</button>
         </form>
       </div>
     </div>
