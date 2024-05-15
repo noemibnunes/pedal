@@ -77,11 +77,9 @@
                 <label for="ponto{{ $bicicleta->ponto->id }}">{{ $bicicleta->ponto->descricao }}</label>
             </div>
           </div>
-      </form> 
     </section>
 
     <section class="aluguel-form" aria-label="Formulário">
-      <form class="form-aluguel" id="formPagamento">
         <div id="valorDiv">
             <label for="valor">Valor do aluguel:</label>
             <input type="text" id="valor" name="valor" value="" readonly>
@@ -116,7 +114,6 @@
           <div class="container-finalizar">
             <button type="submit" class="botao-finalizar" style="color: #fff">Finalizar</button>
           </div>
-        </form>
         
         @csrf
       </form> 
