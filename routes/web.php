@@ -37,6 +37,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/bicicleta/{id}', [BicicletaController::class, 'show'])->name('info-bicicleta');
     Route::get('/aluguel/{id}', [AluguelController::class, 'aluguelView'])->name('aluguel');
     Route::get('/taxa-aluguel/{hora_selecionada}', [AluguelController::class, 'taxaAluguelHora'])->name('taxaAluguel');
-    Route::get('/aluguel-finalizado', [AluguelController::class, 'aluguelFinalizadoView'])->name('aluguel-finalizado');
+    Route::post('/aluguel-finalizado', [AluguelController::class, 'aluguelFinalizadoView'])->name('aluguel-finalizado');
     
 });

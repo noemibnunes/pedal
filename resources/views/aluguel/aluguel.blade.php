@@ -15,15 +15,15 @@
         <form class="form-aluguel" id="formPagamento" method="POST" action="{{ route('aluguel-finalizado') }}">
           <div class="tipo-pagamento">
               <label for="tipoPagamentoHoraFixa">
-                  <input class="form-control" type="radio" id="tipoPagamentoHoraFixa" name="tipoPagamento" value="horaFixa" checked>
+                  <input class="form-control" type="radio" id="tipoPagamentoHoraFixa" name="tipo_pagamento" value="horaFixa" checked>
                   <span>HORA FIXA</span>
               </label>
               <label for="tipoPagamentoLivre">
-                  <input class="form-control" type="radio" id="tipoPagamentoLivre" name="tipoPagamento" value="livre">
+                  <input class="form-control" type="radio" id="tipoPagamentoLivre" name="tipo_pagamento" value="livre">
                   <span>LIVRE</span>
               </label>
               <label for="tipoPagamentoPlano">
-                  <input class="form-control" type="radio" id="tipoPagamentoPlano" name="tipoPagamento" value="plano">
+                  <input class="form-control" type="radio" id="tipoPagamentoPlano" name="tipo_pagamento" value="plano">
                   <span>PLANO</span>
               </label>
               <input type="hidden" id="userHasPlan" value="{{ $user->plano_id ? 'true' : 'false' }}">
@@ -65,7 +65,7 @@
           <div id="modeloDiv">
             <h2 class="font-1-xs cor-5">Modelo</h2>
             <div id="modeloAlugado">
-                <input class="form-control" type="radio" id="modelo{{ $bicicleta->modelo }}" name="modelo" value="{{ $bicicleta->modelo }}" checked>
+                <input class="form-control" type="radio" id="modelo{{ $bicicleta->modelo }}" name="bicicleta_id" value="{{ $bicicleta->id }}" checked>
                 <label for="modelo{{ $bicicleta->id }}">{{ $bicicleta->modelo }}</label>
             </div>
           </div>
@@ -73,7 +73,7 @@
           <div id="localDiv">
             <h2 class="font-1-xs cor-5">Ponto da pedal</h2>
             <div id="postoPedal">
-                <input class="form-control" type="radio" id="ponto{{ $bicicleta->ponto->id }}" name="ponto" value="{{ $bicicleta->ponto->id }}" checked>
+                <input class="form-control" type="radio" id="ponto{{ $bicicleta->ponto->id }}" name="ponto_id" value="{{ $bicicleta->ponto->id }}" checked>
                 <label for="ponto{{ $bicicleta->ponto->id }}">{{ $bicicleta->ponto->descricao }}</label>
             </div>
           </div>
@@ -92,7 +92,7 @@
             @else
                 @foreach ($cartoes as $cartao)
                     <div class="cartoes">
-                        <input class="form-control" type="radio" id="cartao{{ $cartao->id }}" name="cartao" value="{{ $cartao->id }}" checked>
+                        <input class="form-control" type="radio" id="cartao{{ $cartao->id }}" name="cartao_id" value="{{ $cartao->id }}" checked>
                         <label for="cartao{{ $cartao->id }}">
                             @if ($cartao->tipo_cartao === 'debito')
                                 <strong>Débito</strong>

@@ -45,12 +45,14 @@ class AluguelService
     
         $valor_aluguel = str_replace('R$', '', $request->valor);
         $valor_aluguel = str_replace(',', '.', $valor_aluguel);
+
+        $bicicleta = Bicicleta::where('modelo', $request->modelo)->first();
     
         $aluguel = Aluguel::create([
-            'bicicleta_id' => $request->bicicleta,
+            'bicicleta_id' => $request->bicicleta_id,
             'user_id' => $user->id, 
             'plano_id' => $request->plano,
-            'cartao_id' => $request->cartao ?? null,
+            'cartao_id' => $request->cartao_id ?? null,
             'valor_aluguel' => $valor_aluguel,
             'tipo_pagamento' => $request->tipo_pagamento,
         ]);
