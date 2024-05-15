@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PlanoController;
 use App\Http\Controllers\CartaoController;
+use App\Http\Controllers\AluguelController;
 use App\Http\Controllers\BicicletaController;
 
 // Route::get('/', function () {
@@ -32,5 +33,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/cadastrar-cartao', [CartaoController::class, 'cadastrarCartao'])->name('cadastrar-cartao');
     Route::get('/cartao/{id}', [CartaoController::class, 'cartaoView'])->name('cartao-view');
     Route::put('/editar-cartao/{id}', [CartaoController::class, 'editarCartao'])->name('editar-cartao');
+
+    Route::get('/bicicleta/{id}', [BicicletaController::class, 'show'])->name('info-bicicleta');
+    Route::get('/aluguel/{id}', [AluguelController::class, 'aluguelView'])->name('aluguel');
+    Route::get('/taxa-aluguel/{hora_selecionada}', [AluguelController::class, 'taxaAluguelHora'])->name('taxaAluguel');
+    Route::get('/aluguel-finalizado', [AluguelController::class, 'aluguelFinalizadoView'])->name('aluguel-finalizado');
     
 });

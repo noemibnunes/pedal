@@ -2,15 +2,13 @@
 
 namespace App\Models;
 
-use App\Models\Ponto;
+use App\Models\user;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Bicicleta extends Model
+class Ponto extends Model
 {
-    use HasFactory;
-
-    protected $table = 'bicycles';
+    protected $table = 'points';
 
     /**
      * The attributes that are mass assignable.
@@ -18,21 +16,17 @@ class Bicicleta extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'modelo',
-        'disponibilidade',
-        'valor_aluguel',
+        'id',
         'descricao',
-        'quantidades',
-        'imagem',
-        'user_id',
-        'ponto_id'
+        'user_id'
     ];
 
     ######################
     # RELACIONAMENTOS
     ######################
-    public function ponto()
+    public function user()
     {
-        return $this->belongsTo(Ponto::class, 'ponto_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
 }

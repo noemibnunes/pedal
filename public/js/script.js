@@ -128,6 +128,102 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+var inputHorario = document.getElementById("quantidadeHoras");
+var valorInput = document.getElementById("valor");
+
+inputHorario.addEventListener("change", function() {
+    var horarioSelecionado = inputHorario.value;
+
+    // Fazendo a requisição para o endpoint com a hora selecionada
+    fetch('/taxa-aluguel/' + horarioSelecionado)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro na requisição');
+            }
+            return response.json();
+        })
+        .then(data => {
+            valorInput.value = 'R$ ' + data;
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+        });
+});
+
+var inputHorario = document.getElementById("quantidadeHoras");
+var tipoPagamentoHoraFixa = document.getElementById("tipoPagamentoHoraFixa");
+var tipoPagamentoLivre = document.getElementById("tipoPagamentoLivre");
+var tipoPagamentoPlano = document.getElementById("tipoPagamentoPlano");
+var valorDiv = document.getElementById("valorDiv");
+
+function mostrarCampoValor() {
+    valorDiv.style.display = "block";
+}
+
+function ocultarCampoValor() {
+    valorDiv.style.display = "none";
+}
+
+tipoPagamentoHoraFixa.addEventListener("change", mostrarCampoValor);
+tipoPagamentoLivre.addEventListener("change", ocultarCampoValor);
+tipoPagamentoPlano.addEventListener("change", ocultarCampoValor);
+
+if (tipoPagamentoHoraFixa.checked) {
+    mostrarCampoValor();
+} else {
+    ocultarCampoValor();
+}
+
+document.getElementById('tipoPagamentoPlano').addEventListener('change', function() {
+  var planoSelect = document.getElementById('plano');
+  if (this.checked) {
+      planoSelect.disabled = false;
+  } else {
+      planoSelect.disabled = true;
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const horaFixaRadio = document.getElementById('tipoPagamentoHoraFixa');
+    const livreRadio = document.getElementById('tipoPagamentoLivre');
+    const planoRadio = document.getElementById('tipoPagamentoPlano');
+    const horasDiv = document.getElementById('horasDiv');
+    const mensagemLivre = document.getElementById('mensagemLivre');
+    const planoDiv = document.getElementById('planoDiv');
+    const planoRadioDiv = document.getElementById('planoRadioDiv');
+    const userHasPlan = document.getElementById('userHasPlan').value === 'true';
+
+    function togglePagamentoOptions() {
+        if (horaFixaRadio.checked) {
+            horasDiv.style.display = 'block';
+            mensagemLivre.style.display = 'none';
+            planoDiv.style.display = 'none';
+            planoRadioDiv.style.display = 'none';
+        } else if (livreRadio.checked) {
+            horasDiv.style.display = 'none';
+            mensagemLivre.style.display = 'block';
+            planoDiv.style.display = 'none';
+            planoRadioDiv.style.display = 'none';
+        } else if (planoRadio.checked) {
+            horasDiv.style.display = 'none';
+            mensagemLivre.style.display = 'none';
+            if (userHasPlan) {
+                planoDiv.style.display = 'none';
+                planoRadioDiv.style.display = 'block';
+            } else {
+                planoDiv.style.display = 'block';
+                planoRadioDiv.style.display = 'none';
+            }
+        }
+    }
+
+    horaFixaRadio.addEventListener('change', togglePagamentoOptions);
+    livreRadio.addEventListener('change', togglePagamentoOptions);
+    planoRadio.addEventListener('change', togglePagamentoOptions);
+
+    togglePagamentoOptions();
+});
+
 document.querySelector('#imagem').addEventListener('change', function () {
   document.querySelector('.text-file').textContent = this.files[0].name;
-})
+});

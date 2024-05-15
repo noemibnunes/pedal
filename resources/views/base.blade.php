@@ -30,6 +30,7 @@
           <ul class="header-menu font-1-m cor-0">
               <li><a href="{{ route('bicicletas') }}">Bicicletas</a></li>
               @auth 
+                  <li><a href="{{ route('perfil') }}">Meu Perfil</a></li>
                   <li><a href="{{ route('logout') }}">Sair</a></li> 
               @else
                   <li><a href="{{ route('cadastro') }}">Cadastrar</a></li>

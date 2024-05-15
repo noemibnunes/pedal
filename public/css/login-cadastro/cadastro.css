@@ -63,6 +63,7 @@
 .form-two input[type="text"],
 .form-two input[type="number"],
 .form-two input[type="date"],
+.form-two input[type="time"],
 select  {
     font: 400 1rem/1.5 "Roboto", sans-serif;
     background: var(--cor-1);
@@ -78,6 +79,7 @@ select  {
 .form-two input[type="text"]:focus,
 .form-two input[type="number"]:focus,
 .form-two input[type="date"]:focus,
+.form-two input[type="time"]:focus,
 select:focus {
     outline: none;
     border-color: var(--cor-p1);

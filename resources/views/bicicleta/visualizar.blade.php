@@ -9,7 +9,6 @@
       </div>
     </div>
       
-  @foreach($bicicletas as $bicicleta)
     <div class="bicicletas container">
       <div class="bicicletas-imagem">
         <img src="{{ $bicicleta->imagem }}" alt="{{ $bicicleta->modelo }}" width="100%" height="100%">
@@ -17,7 +16,7 @@
         <div class="disponibilidade">
           <div class="estoque">
             <img src="./img/icones/estoque.svg" alt="">
-            <span>{{ $bicicleta->disponibilidade ? 'Disponível' : Indisponível }}</span>
+            <span>{{ $bicicleta->disponibilidade ? 'Disponível' : 'Indisponível' }}</span>
           </div>
           <div class="entrega">
             <img src="./img/icones/entrega.svg" alt="">
@@ -28,23 +27,8 @@
       <div class="bicicletas-conteudo">
         <h2 class="font-1-xl">{{ $bicicleta->modelo }}</h2>
         <p class="font-2-s cor-8">{{ $bicicleta->descricao }}</p>
-        <ul class="font-1-m cor-8">
-          <li>
-            <img src="./img/icones/carbono.svg" alt="">
-            Fibra de Carbono
-          </li>
-          <li>
-            <img src="./img/icones/velocidade.svg" alt="">
-            20 km/h
-            </li>
-          <li>
-            <img src="./img/icones/rastreador.svg" alt="">
-            Rastreador
-          </li>
-          </ul>
-        <a class="botao" style="color: #fff" href="{{ route('info-bicicleta', ['id' => $bicicleta->id]) }}">Saiba mais</a>
+        <a class="botao" style="color: #fff" href="{{ route('aluguel', ['id' => $bicicleta->id]) }}">Alugar agora</a>
       </div>
     </div>
 </main>
-  @endforeach
 @endsection()

@@ -6,11 +6,11 @@ use App\Models\Ponto;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Bicicleta extends Model
+class Aluguel extends Model
 {
     use HasFactory;
 
-    protected $table = 'bicycles';
+    protected $table = 'rents';
 
     /**
      * The attributes that are mass assignable.
@@ -18,21 +18,16 @@ class Bicicleta extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'modelo',
-        'disponibilidade',
-        'valor_aluguel',
-        'descricao',
-        'quantidades',
-        'imagem',
+        'bicicleta_id',
         'user_id',
-        'ponto_id'
+        'plano_id',
+        'valor_aluguel',
+        'cartao_id',
+        'tipo_pagamento'
     ];
 
     ######################
     # RELACIONAMENTOS
     ######################
-    public function ponto()
-    {
-        return $this->belongsTo(Ponto::class, 'ponto_id', 'id');
-    }
+   
 }

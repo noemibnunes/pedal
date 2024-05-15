@@ -9,6 +9,7 @@ use App\Models\Plano;
 use App\Models\Endereco;
 use App\Models\Telefone;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserService
 {
@@ -39,8 +40,6 @@ class UserService
     {
         if ($request->email && $request->senha) {
             if (Auth::attempt(['email' => $request->email, 'password' => $request->senha])) {
-                $user = User::where('email', $request->email)->first();
-                Auth::login($user);
                 return "Login com Sucesso!"; 
             }
         } else {
@@ -66,10 +65,7 @@ class UserService
         $user->cpf = $request->cpf;
         $user->email = $request->email;
         $user->password = bcrypt($request->senha);
-        
         $user->data_nascimento = $request->data_nascimento;
-        
-
         $user->plano_id = $request->plano;
 
         if ($request->hasFile('imagem_perfil')) {
@@ -77,21 +73,24 @@ class UserService
             $user->imagem_perfil = $imagem_perfil;
         }
 
-        $telefone = $request->telefone ?: $request->celular;
-        $celular = $request->celular ?: $request->telefone;
+        $telefone = $request->telefone ?: null;
+        $celular = $request->celular ?: null;
 
-        $user->telefone()->updateOrCreate(
-            ['telefonable_id' => $user->id],
-            [
-                'telefone' => $telefone,
-                'celular' => $celular
-            ]
-        );
+        if ($telefone !== null || $celular !== null) {
+            $user->telefone()->updateOrCreate(
+                ['telefonable_id' => $user->id],
+                [
+                    'telefone' => $telefone,
+                    'celular' => $celular
+                ]
+            );
+        }
 
         $user->save();
 
         return "Perfil atualizado com sucesso!";
     }
+
 
     public function enderecoView()
     {

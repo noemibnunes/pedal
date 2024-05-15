@@ -18,4 +18,9 @@ class BicicletaController extends Controller
     {
         return $this->bicicletaService->listarBicicletasDisponiveis();
     }
+
+    public function show(int $id) 
+    {
+        return $this->bicicletaService->visualizarBicicleta($id);
+    }
 }

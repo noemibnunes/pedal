@@ -47,3 +47,6 @@
 
 /* Cartões */
 @import "./cartao/cartao-lista.css";
+
+/* Aluguel */
+@import "./aluguel/aluguel.css";
