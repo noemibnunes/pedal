@@ -23,6 +23,10 @@
             <img src="./img/icones/entrega.svg" alt="">
             <span>{{ $bicicleta->quantidades }}</span>
           </div>
+          <div class="pontoPedal">
+            <img src="./img/icones/local.svg" alt="">
+            <span>{{ $bicicleta->ponto->descricao }}</span>
+          </div>
         </div>
       </div>
       <div class="bicicletas-conteudo">

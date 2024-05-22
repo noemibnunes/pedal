@@ -13,6 +13,26 @@
     <section class="aluguel-formulario" aria-label="Formulário">
       <h2 class="font-1-xs cor-5">Forma de aluguel</h2>
         <form class="form-aluguel" id="formPagamento" method="POST" action="{{ route('aluguel-finalizado') }}">
+          @if ($errors->has('success'))
+                  <div class="alert alert-success">
+                    {{ $errors->first('success') }}
+                    <script>
+                      setTimeout(function() {
+                        window.location.href = "{{ route('aluguel-finalizado-view') }}";
+                      }, 2000);
+                    </script>
+                  </div>
+                  @else
+                  @if ($errors->any())
+                    <div class="alert alert-danger">
+                      <ul>
+                        @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                        @endforeach
+                      </ul>
+                    </div>
+                  @endif
+                @endif
           <div class="tipo-pagamento">
               <label for="tipoPagamentoHoraFixa">
                   <input class="form-control" type="radio" id="tipoPagamentoHoraFixa" name="tipo_pagamento" value="horaFixa" checked>
@@ -29,23 +49,22 @@
               <input type="hidden" id="userHasPlan" value="{{ $user->plano_id ? 'true' : 'false' }}">
           </div>
 
-          
-          @if ($user->plano)
+        @if ($user->plano)
           <div id="planoRadioDiv" style="display: none;">
-            <input class="form-control" type="radio" id="planoRadio" name="plano" value="{{ $user->plano_id }}" checked>
+            <input class="form-control" type="radio" id="planoRadio" name="plano_id" value="{{ $user->plano_id }}" checked>
             <label for="planoRadio">{{ $user->plano->tipo_plano }}</label>
           </div>
           @else
             <div id="planoDiv" style="display: none;">
               <label id="labelAluguel" for="plano">Selecione desejar aderia a um plano, selecione uma opção:</label>
-                <select class="select-aluguel" id="planoSelect" name="plano">
+                <select class="select-aluguel" id="planoSelect" name="plano_id">
                     <option value="">Selecione</option>
                     @foreach ($planos as $plano)
                         <option value="{{ $plano->id }}">{{ $plano->tipo_plano . " - " . "R$ " . $plano->valor_plano }}</option>
                     @endforeach
                 </select>
             </div>
-          @endif
+        @endif
 
           <div id="mensagemLivre" style="display: none;">
               <p class="alert-aluguel">

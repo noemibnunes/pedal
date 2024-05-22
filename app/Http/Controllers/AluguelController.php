@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Services\AluguelService;
 use Illuminate\Routing\Controller;
 use App\Http\Requests\CartaoRequest;
+use Illuminate\Support\Facades\Auth;
 
 class AluguelController extends Controller
 {
@@ -21,20 +22,30 @@ class AluguelController extends Controller
         return $this->aluguelService->aluguelView($bicicleta_id);
     }
 
-    public function taxaAluguelHora($hora_selecionada) 
+    public function taxaAluguelHora($hora_selecionada, Request $request) 
     {
-        return $this->aluguelService->taxaAluguelHora($hora_selecionada);
+        return $this->aluguelService->taxaAluguelHora($hora_selecionada, $request);
     }
 
-    public function aluguelFinalizadoView(Request $request)
+    public function aluguelFinalizado(Request $request)
     {
         try {
-            $mensagem = $this->aluguelService->aluguelFinalizadoView($request);
+            $mensagem = $this->aluguelService->aluguelFinalizado($request);
             return redirect()->back()->withErrors(['success' => $mensagem]);
         } catch (Exception $exception) {
             return response()->json(['errors' => $exception->getMessage()], 400);
         }
     }
 
+    public function aluguelFinalizadoView() 
+    {
+        return $this->aluguelService->aluguelFinalizadoView();
+    }
+
+    public function historicoAluguel() 
+    {
+        $user = Auth::user();
+        return $this->aluguelService->historicoAluguel($user->id);
+    }
 
 }

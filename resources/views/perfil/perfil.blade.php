@@ -18,6 +18,7 @@
               <li><a href="{{ route('endereco-view') }}">Meu Endereço</a></li>
               <li><a href="{{ route('cartoes-cadastrados') }}">Meus Cartões</a></li>
               <li><a href="#">Meu Histórico de aluguel</a></li>
+              <!-- <li><a href="{{ route('aluguel-historico') }}">Meu Histórico de aluguel</a></li> -->
             </ul>
         </div>
       </div>

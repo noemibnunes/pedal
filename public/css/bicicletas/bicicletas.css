@@ -82,7 +82,8 @@
 }
 
 .disponibilidade .estoque,
-.disponibilidade .entrega {
+.disponibilidade .entrega,
+.disponibilidade .pontoPedal {
     display: flex;
     padding: 4px 8px;
     border-radius: 4px;

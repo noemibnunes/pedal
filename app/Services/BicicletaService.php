@@ -66,4 +66,22 @@ class BicicletaService
             abort(500, 'Erro ao carregar a bicicleta.');
         }
     }
+
+    public function alugarBicicleta($id)
+    {
+        $client = new Client();
+        $response = $client->get('http://127.0.0.1:8080/alugar-bicicleta/' . $id);
+
+        if ($response->getStatusCode() === 200) {
+            $data = json_decode($response->getBody()->getContents(), true);
+
+            if ($data['message']) {
+                return "Bicicleta alugada com sucesso!";
+            } else {
+                return "Erro ao alugar bicicleta: " . $data['message'];
+            }
+        } else {
+            abort(500, 'Erro ao alugar a bicicleta.');
+        }
+    }
 }

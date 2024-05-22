@@ -130,12 +130,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 var inputHorario = document.getElementById("quantidadeHoras");
 var valorInput = document.getElementById("valor");
+var bicicletaDiv = document.getElementById("modeloAlugado");
+var inputRadio = bicicletaDiv.querySelector('input[type="radio"]');
+var bicicleta_id = inputRadio.value;
 
 inputHorario.addEventListener("change", function() {
     var horarioSelecionado = inputHorario.value;
 
-    // Fazendo a requisição para o endpoint com a hora selecionada
-    fetch('/taxa-aluguel/' + horarioSelecionado)
+    fetch('/taxa-aluguel/' + horarioSelecionado + '?bicicleta_id=' + bicicleta_id)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Erro na requisição');

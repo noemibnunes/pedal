@@ -19,7 +19,7 @@
               <ul class="list-unstyled">
                 <li><a href="{{ route('endereco-view') }}" style="color: #4e6c50; font-weight: bold;">Meu Endereço</a></li>
                 <li><a href="{{ route('cartoes-cadastrados') }}">Meus Cartões</a></li>
-                <li><a href="#">Meu Histórico de aluguel</a></li>
+                <li><a href="{{ route('aluguel-historico') }}">Meu Histórico de aluguel</a></li>
               </ul>
           </div>
       </div>
