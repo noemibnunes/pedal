@@ -20,6 +20,12 @@ class CartaoService
         return view('cartao.cadastro_cartao', ['user' => $user]);
     }
 
+    public function cadastroCartaoAluguelView() 
+    {
+        $user = Auth::user();
+        return view('cartao.cadastro_cartao', ['user' => $user]);
+    }
+
     public function cadastrarCartao($request) 
     {
         Cartao::create([
@@ -30,8 +36,18 @@ class CartaoService
            'bandeira_cartao' => $request->bandeira_cartao,
            'apelido_cartao' => $request->apelido_cartao
         ]);
-        
-        return "Cartão cadastrado com sucesso!";
+
+        $previousUrl = $request->headers->get('Referer');
+
+        if (strpos($previousUrl, 'cadastro-cartao-aluguel') !== false) {
+            $urlParts = explode('?', $previousUrl); 
+            $params = explode('=', $urlParts[1]); 
+            $rentalId = $params[1]; 
+
+            return redirect("/aluguel/$rentalId");
+        } else {
+            return redirect('/cartoes');
+        }
     }
 
     public function cartaoView($id)

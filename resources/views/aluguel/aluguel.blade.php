@@ -54,7 +54,8 @@
             <input class="form-control" type="radio" id="planoRadio" name="plano_id" value="{{ $user->plano_id }}" checked>
             <label for="planoRadio">{{ $user->plano->tipo_plano }}</label>
           </div>
-          @else
+          @endif
+
             <div id="planoDiv" style="display: none;">
               <label id="labelAluguel" for="plano">Selecione desejar aderia a um plano, selecione uma opção:</label>
                 <select class="select-aluguel" id="planoSelect" name="plano_id">
@@ -64,7 +65,6 @@
                     @endforeach
                 </select>
             </div>
-        @endif
 
           <div id="mensagemLivre" style="display: none;">
               <p class="alert-aluguel">
@@ -128,7 +128,7 @@
           </div>
 
           <div class="container-cadastro">
-            <a class="botao-novo-cartao" style="color: #fff" href="{{ route('cadastro-cartao') }}">Novo cartão</a>
+            <a class="botao-novo-cartao" style="color: #fff" href="{{ route('cadastro-cartao-aluguel', ['aluguel' => $bicicleta->id]) }}">Novo cartão</a>
           </div>
           <div class="container-finalizar">
             <button type="submit" class="botao-finalizar" style="color: #fff">Finalizar</button>

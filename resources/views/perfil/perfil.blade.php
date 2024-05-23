@@ -12,6 +12,32 @@
           @endif
         </div>
 
+        <div class="col-md-9">
+            @if($aluguelAtual)
+            <div class="card">
+                <div class="card-header">
+                    Aluguel Atual
+                </div>
+                <div class="card-body">
+                    <p><strong>Bicicleta alugada:</strong> {{ $aluguelAtual->bicicleta->modelo }}</p>
+                    <p><strong>Tipo de Pagamento:</strong> {{ $aluguelAtual->tipo_pagamento }}</p>
+                    <p><strong>Valor do Aluguel:</strong> R$ {{ $aluguelAtual->valor_aluguel }}</p>
+                    <!-- Adicione mais informações relevantes do aluguel aqui -->
+                    <form action="{{ route('entregar-bicicleta') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="aluguel_id" value="{{ $aluguelAtual->id }}">
+                        <button type="submit" class="btn btn-danger">Entregar Bicicleta</button>
+                    </form>
+                </div>
+            </div>
+            @else
+            <div class="alert alert-info" role="alert">
+                Não há aluguel atual.
+            </div>
+            @endif
+            <!-- Adicione mais seções conforme necessário -->
+        </div>
+
         <div class="mt-3">
           <h5> {{ $user->name}} {{ $user->sobrenome }} </h5>
             <ul class="list-unstyled">

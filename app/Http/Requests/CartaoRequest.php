@@ -31,7 +31,8 @@ class CartaoRequest extends FormRequest
             'numero_cartao' => [
                 'required', 
                 'min:16',  
-                'max:255', 
+                'max:255',
+                'unique:cartoes,numero_cartao' 
             ],
             'data_validade' => [
                 'required', 
