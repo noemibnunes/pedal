@@ -94,6 +94,5 @@ class AluguelService
         $user = Auth::user();
         $alugueis = Aluguel::with(['user', 'bicicleta', 'bicicleta.ponto', 'plano', 'cartao'])->where('user_id', $user_id)->get();
         return view('aluguel.aluguel_historico', ['alugueis' => $alugueis, 'user' => $user]);
-        // return $alugueis;
     }
 }

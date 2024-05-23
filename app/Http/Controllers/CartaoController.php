@@ -26,11 +26,15 @@ class CartaoController extends Controller
         return $this->cartaoService->cadastroCartaoView();
     }
 
+    public function cadastroCartaoAluguelView() 
+    {
+        return $this->cartaoService->cadastroCartaoAluguelView();
+    }
+
     public function cadastrarCartao(CartaoRequest $request)
     {
         try {
-            $mensagem = $this->cartaoService->cadastrarCartao($request);
-            return redirect()->back()->withErrors(['success' => $mensagem]);
+            return $this->cartaoService->cadastrarCartao($request);
         } catch (Exception $exception) {
             return response()->json(['errors' => $exception->getMessage()], 400);
         }

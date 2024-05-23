@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/cartoes', [CartaoController::class, 'all'])->name('cartoes-cadastrados');
     Route::get('/cadastro-cartao', [CartaoController::class, 'cadastroCartaoView'])->name('cadastro-cartao');
+    Route::get('/cadastro-cartao-aluguel', [CartaoController::class, 'cadastroCartaoView'])->name('cadastro-cartao-aluguel');
     Route::post('/cadastrar-cartao', [CartaoController::class, 'cadastrarCartao'])->name('cadastrar-cartao');
     Route::get('/cartao/{id}', [CartaoController::class, 'cartaoView'])->name('cartao-view');
     Route::put('/editar-cartao/{id}', [CartaoController::class, 'editarCartao'])->name('editar-cartao');
