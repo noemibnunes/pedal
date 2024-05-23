@@ -1,25 +1,211 @@
-.col-md-3 {
+/* .col-md-3 {
     float: left;
     padding: 20px;
 }
 
 .card-img {
     border-radius: 20% !important;
-    width: 50%; 
+    width: 50%;
 }
 
 .col-md-9 {
-    margin-bottom: 20px; 
-    padding: 20px; 
+    margin-bottom: 20px;
+    padding: 20px;
 }
 
 .list-unstyled li {
-    margin-bottom: 10px; 
-  }
-  
-  .list-unstyled li a:hover {
-    color: var(--cor-p2); 
-  }
-  
-  
-  
+    margin-bottom: 10px;
+}
+
+.list-unstyled li a:hover {
+    color: var(--cor-p2);
+} */
+
+#perfil {
+    background: linear-gradient(var(--cor-p5) 600px, var(--cor-1) 0px);
+}
+
+.perfil {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    margin-bottom: 116px;
+}
+
+.menu-perfil {
+    background-color: #fff;
+    border-radius: 200px 0px 0px 200px !important;
+    display: grid;
+    grid-template-rows: auto auto auto 1fr;
+    justify-content: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.menu-perfil input[type="file"] {
+    display: none;
+}
+
+.menu-perfil .label-file {
+    background: none;
+    border: none;
+    color: #155724;
+    text-align: center;
+}
+
+.enviar-foto a {
+    text-transform: lowercase;
+    color: #82a584;
+    margin: 0 auto;
+}
+
+.enviar-foto a:hover {
+    color: #4e6c50;
+}
+
+.foto-perfil img {
+    width: 220px;
+    border: 1px solid #112412;
+    border-radius: 100%;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.menu-perfil h3 {
+    margin: 80px 0px 32px 0px;
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.lista-perfil {
+    margin-top: 12px;
+}
+
+.list-unstyled {
+    padding: 8px 0 8px 0;
+    border: 1px solid #6a886c;
+    border-radius: 4px;
+    background-color: #f7f7f7;
+}
+
+.lista-perfil ul li {
+    text-transform: lowercase;
+    display: block;
+    padding: 8px;
+    text-align: center;
+    color: #82a584;
+}
+
+.lista-perfil ul li:hover {
+    color: #4e6c50;
+}
+
+.perfil h2::before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 8px;
+    background-color: var(--cor-p1);
+    position: absolute;
+    left: -12px;
+}
+
+.perfil h2 {
+    text-transform: uppercase;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 32px;
+    font-weight: bold;
+}
+
+.perfil-formulario {
+    padding: 60px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    align-content: center;
+    border-radius: 0px 5px 5px 0px;
+    background: var(--cor-0) url("../../img/dec/bottom-right.svg") no-repeat
+        bottom 20px right 20px;
+}
+
+/* formulário cadastro */
+
+.form-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-two label {
+    display: block;
+    font: 400 1rem/1.5 "Poppins", sans-serif;
+    margin-bottom: 4px;
+}
+
+.form-two input[type="password"],
+.form-two input[type="email"],
+.form-two input[type="text"],
+.form-two input[type="number"],
+.form-two input[type="date"],
+.form-two input[type="time"],
+select {
+    font: 400 1rem/1.5 "Roboto", sans-serif;
+    background: var(--cor-1);
+    border: 1px solid var(--cor-2);
+    padding: 12px;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-two input[type="password"]:focus,
+.form-two input[type="email"]:focus,
+.form-two input[type="text"]:focus,
+.form-two input[type="number"]:focus,
+.form-two input[type="date"]:focus,
+.form-two input[type="time"]:focus,
+select:focus {
+    outline: none;
+    border-color: var(--cor-p1);
+    background: var(--cor-0);
+    box-shadow: 0 0 0 2px var(--cor-p1);
+}
+
+.form-two .col-2 {
+    grid-column: span 2;
+}
+
+.form-two input[type="file"] {
+    display: none;
+}
+
+.label-file {
+    padding: 12px;
+    background-color: var(--cor-1);
+    color: #155724;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    cursor: pointer;
+    border: 1px solid var(--cor-2);
+    border-radius: 4px;
+
+    span:nth-child(2) {
+        color: #fff;
+        background-color: var(--cor-p3);
+        padding: 0 8px;
+        border: 1px solid var(--cor-p3);
+        border-radius: 4px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        float: right;
+    }
+
+    span:nth-child(2):hover {
+        background: var(--cor-p4);
+    }
+}
+
+.label-file:hover {
+    color: var(--cor-p1);
+    background: var(--cor-0);
+}
