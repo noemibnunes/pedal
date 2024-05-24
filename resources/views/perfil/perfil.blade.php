@@ -9,25 +9,25 @@
       </div>
 
       <div class="perfil container">
-        <section class='menu-perfil'>          
-          <h3> {{ $user->name}} {{ $user->sobrenome }} </h3>                   
+        <section class='menu-perfil'>                            
           <div class='foto-perfil'>
-            @if ($user->imagem_perfil)
-              <img src="{{ asset('storage/' .$user->imagem_perfil) }}" alt="Foto do perfil" class="card-img">
-            @else
-              <img src="{{ asset('img/icones/user.jpg') }}" alt="Foto do perfil" class="card-img">
-            @endif
-          </div>
-          <div class='lista-perfil'>
-              <ul class="list-unstyled">
-                <li><a href="{{ route('endereco-view') }}">endereço</a></li>
-                <li><a href="{{ route('cartoes-cadastrados') }}">cartões</a></li>
-                <li><a href="{{ route('aluguel-historico') }}">histórico de alugueis</a></li>
-              </ul>
+              @if ($user->imagem_perfil)
+                <img src="{{ asset('storage/' .$user->imagem_perfil) }}" alt="Foto do perfil" class="card-img">
+              @else
+                <img src="{{ asset('img/icones/user.jpg') }}" alt="Foto do perfil" class="card-img">
+              @endif
+            </div>
+            <h3> {{ $user->name}} {{ $user->sobrenome }} </h3> 
+            <div class='lista-perfil'>
+                <ul class="list-unstyled">
+                  <li><a href="{{ route('perfil') }}">dados pessoais</a></li>
+                  <li><a href="{{ route('endereco-view') }}">endereço</a></li>
+                  <li><a href="{{ route('cartoes-cadastrados') }}">cartões</a></li>
+                </ul>
           </div>
         </section>
         <section class="cadastro-formulario" aria-label="Formulário">
-          <h2 class="font-1-xs cor-9">dados pessoais</h2>
+          <h2 class="font-1-xs cor-9" style="margin-top:20px">dados pessoais</h2>
           @if ($errors->has('success'))
             <div class="alert alert-success">
               {{ $errors->first('success') }}
@@ -93,10 +93,10 @@
               </input>
             </div>
             <div>
-              <button type="button" class="botao btn-login" id="editarPerfil" style="font-size: 0.9rem">Editar Perfil</button>
+              <button type="button" class="botao btn-login" id="editarPerfil" style="font-size: 1rem">Editar Perfil</button>
             </div>
             <div>
-              <button type="submit" class="botao btn-login" id="salvarPerfil" style="font-size: 0.9rem">Salvar Perfil</button>
+              <button type="submit" class="botao btn-login" id="salvarPerfil" style="font-size: 1rem">Salvar Perfil</button>
             </div>           
           </form>
         </section>  

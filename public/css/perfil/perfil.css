@@ -26,8 +26,9 @@
 }
 
 .perfil {
+    max-height: 1000px;
     display: grid;
-    grid-template-columns: 5fr 7fr;
+    grid-template-columns: auto 7fr;
     margin-bottom: 116px;
 }
 
@@ -35,7 +36,7 @@
     background-color: #fff;
     border-radius: 200px 0px 0px 200px !important;
     display: grid;
-    grid-template-rows: auto auto auto 1fr;
+    grid-template-rows: auto auto auto auto;
     justify-content: center;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
@@ -44,58 +45,46 @@
     display: none;
 }
 
-.menu-perfil .label-file {
-    background: none;
-    border: none;
-    color: #155724;
-    text-align: center;
-}
-
-.enviar-foto a {
+.text-file {
     text-transform: lowercase;
     color: #82a584;
     margin: 0 auto;
 }
 
-.enviar-foto a:hover {
-    color: #4e6c50;
-}
-
 .foto-perfil img {
-    width: 220px;
-    border: 1px solid #112412;
-    border-radius: 100%;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    height: 460px;
+    width: 400px;
+    object-fit: cover !important;
+    border-radius: 200px 0px 0px 0px !important;
 }
 
 .menu-perfil h3 {
-    margin: 80px 0px 32px 0px;
+    margin-right: 16px;
     text-transform: capitalize;
     font-size: 1.2rem;
-    text-align: center;
+    text-align: end;
 }
 
-.lista-perfil {
+/* .lista-perfil {
     margin-top: 12px;
-}
+} */
 
-.list-unstyled {
-    padding: 8px 0 8px 0;
-    border: 1px solid #6a886c;
-    border-radius: 4px;
-    background-color: #f7f7f7;
-}
-
-.lista-perfil ul li {
+.list-unstyled a {
     text-transform: lowercase;
+    margin-right: 16px;
     display: block;
-    padding: 8px;
-    text-align: center;
+    padding: 8px 0 8px 0px;
+    text-align: end;
     color: #82a584;
 }
 
-.lista-perfil ul li:hover {
-    color: #4e6c50;
+.list-unstyled a:hover {
+    color: #4f7951;
+}
+
+.list-unstyled a.ativo {
+    color: #4f7951;
+    font-weight: bold;
 }
 
 .perfil h2::before {
