@@ -66,6 +66,12 @@ if (window.SimpleAnime) {
   new SimpleAnime();
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelector('#imagem').addEventListener('change', function () {
+      document.querySelector('.text-file').textContent = this.files[0].name;
+  });
+});
+
 // PERFIL
 document.addEventListener('DOMContentLoaded', function() {
   function habilitarEdicao() {
@@ -93,6 +99,9 @@ document.addEventListener('DOMContentLoaded', function() {
   function habilitarEdicao() {
     document.querySelectorAll('input[readonly]').forEach(function(input) {
       input.removeAttribute('readonly');
+      if (input.value === 'Não informado') {
+        input.value = ''; 
+      }
     });
     document.getElementById('editarEndereco').classList.add('d-none');
     document.getElementById('salvarEndereco').classList.remove('d-none');
@@ -224,8 +233,4 @@ document.addEventListener('DOMContentLoaded', function() {
     planoRadio.addEventListener('change', togglePagamentoOptions);
 
     togglePagamentoOptions();
-});
-
-document.querySelector('#imagem').addEventListener('change', function () {
-  document.querySelector('.text-file').textContent = this.files[0].name;
 });

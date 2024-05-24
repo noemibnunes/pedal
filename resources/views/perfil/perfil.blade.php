@@ -18,18 +18,11 @@
               <img src="{{ asset('img/icones/user.jpg') }}" alt="Foto do perfil" class="card-img">
             @endif
           </div>
-          <div class='enviar-foto'>
-            <input type="file" id="imagem" name="imagem_perfil">
-              <label class="label-file" for="imagem">
-                <a class="text-file">selecionar imagem</a>
-              </label>
-            </input>
-          </div>
           <div class='lista-perfil'>
               <ul class="list-unstyled">
                 <li><a href="{{ route('endereco-view') }}">endereço</a></li>
                 <li><a href="{{ route('cartoes-cadastrados') }}">cartões</a></li>
-                <li><a href="#">histórico de alugueis</a></li>
+                <li><a href="{{ route('aluguel-historico') }}">histórico de alugueis</a></li>
               </ul>
           </div>
         </section>
