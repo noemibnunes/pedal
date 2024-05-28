@@ -17,6 +17,7 @@ class Cartao extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'user_id',
         'nome_titular',
         'numero_cartao',
         'data_validade',

@@ -38,7 +38,19 @@
                 <tr>
                     <td>{{ $aluguel->user->name }}</td>
                     <td>{{ $aluguel->bicicleta->modelo }}</td>
-                    <td>{{ $aluguel->tipo_pagamento }}</td>
+                    <td>
+                        @php
+                            $paymentType = '';
+                            if ($aluguel->tipo_pagamento == 'horaFixa') {
+                                $paymentType = 'Hora Fixa';
+                            } elseif ($aluguel->tipo_pagamento == 'plano') {
+                                $paymentType = 'Plano';
+                            } elseif ($aluguel->tipo_pagamento == 'livre') {
+                                $paymentType = 'Livre';
+                            }
+                        @endphp
+                        {{ $paymentType }}
+                    </td>
                     <td>
                         @if ($aluguel->tipo_pagamento == 'horaFixa')
                             {{ $aluguel->valor_aluguel }}

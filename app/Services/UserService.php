@@ -40,6 +40,8 @@ class UserService
     {
         if ($request->email && $request->senha) {
             if (Auth::attempt(['email' => $request->email, 'password' => $request->senha])) {
+                $user = User::where('email', $request->email)->first();
+                Auth::login($user);
                 return "Login com Sucesso!"; 
             }
         } else {

@@ -92,10 +92,13 @@
           <div id="localDiv">
             <h2 class="font-1-xs cor-5">Ponto da pedal</h2>
             <div id="postoPedal">
-                <input class="form-control" type="radio" id="ponto{{ $bicicleta->ponto->id }}" name="ponto_id" value="{{ $bicicleta->ponto->id }}" checked>
-                <label for="ponto{{ $bicicleta->ponto->id }}">{{ $bicicleta->ponto->descricao }}</label>
+                @foreach ($bicicleta->pontos as $ponto)
+                    <input class="form-control" type="radio" id="ponto{{ $ponto }}" name="ponto_id" value="{{ $ponto->id }}" checked>
+                    <label for="ponto{{ $ponto->descricao }}">{{ $ponto->descricao }}</label><br>
+                @endforeach
             </div>
-          </div>
+        </div>
+
     </section>
 
     <section class="aluguel-form" aria-label="Formulário">

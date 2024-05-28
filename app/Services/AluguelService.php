@@ -24,8 +24,8 @@ class AluguelService
     {        
         $user = Auth::user();
         $planos = Plano::all();
-        $bicicleta = Bicicleta::with('ponto')->findOrFail($bicicleta_id);
-        $cartoes = Cartao::all();
+        $bicicleta = Bicicleta::with('pontos')->findOrFail($bicicleta_id);
+        $cartoes = Cartao::where('user_id', $user->id)->get();
         return view('aluguel.aluguel', ['user' => $user, 'planos' => $planos, 'bicicleta' => $bicicleta, 'cartoes' => $cartoes]);
     }
 
@@ -92,7 +92,7 @@ class AluguelService
     public function historicoAluguel($user_id) 
     {        
         $user = Auth::user();
-        $alugueis = Aluguel::with(['user', 'bicicleta', 'bicicleta.ponto', 'plano', 'cartao'])->where('user_id', $user_id)->get();
+        $alugueis = Aluguel::with(['user', 'bicicleta', 'bicicleta.pontos', 'plano', 'cartao'])->where('user_id', $user_id)->get();
         return view('aluguel.aluguel_historico', ['alugueis' => $alugueis, 'user' => $user]);
     }
 }

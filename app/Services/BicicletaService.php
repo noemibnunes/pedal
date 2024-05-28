@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Exception;
+use App\Models\Ponto;
 use GuzzleHttp\Client;
 use App\Models\Bicicleta;
 use Illuminate\Support\Facades\Http;
@@ -26,13 +27,23 @@ class BicicletaService
                 $bicicleta->disponibilidade = $bicicletaData['disponibilidade'];
                 $bicicleta->valor_aluguel = $bicicletaData['valor_aluguel'];
                 $bicicleta->descricao = $bicicletaData['descricao'];
-                $bicicleta->ponto_id = $bicicletaData['ponto_id'];
-                $bicicleta->quantidades = $bicicletaData['quantidades'];
                 $bicicleta->imagem = 'http://127.0.0.1:8080/storage/' . $bicicletaData['imagem'];
+
+                if (isset($bicicletaData['pontos']) && is_array($bicicletaData['pontos'])) {
+                    $pontosDescricoes = [];
+                    $quantidades = [];
+
+                    foreach ($bicicletaData['pontos'] as $pontoData) {
+                        $pontosDescricoes[] = $pontoData['descricao'];
+                        $quantidades[] = $pontoData['pivot']['quantidade'];
+                    }
+
+                    $bicicleta->pontos = implode(', ', $pontosDescricoes);
+                    $bicicleta->quantidades = implode(', ', $quantidades);
+                }
 
                 $bicicletas[] = $bicicleta;
             }
-
             return view('bicicleta.bicicletas', compact('bicicletas'));
         } else {
             abort(500, 'Erro ao carregar as bicicletas.');
@@ -48,15 +59,22 @@ class BicicletaService
             $data = json_decode($response->getBody()->getContents(), true);
 
             if ($data !== null) {
-                $bicicleta = new Bicicleta($data);
+                $bicicleta = new Bicicleta();
                 $bicicleta->id = $data['id'];
                 $bicicleta->modelo = $data['modelo'];
                 $bicicleta->disponibilidade = $data['disponibilidade'];
                 $bicicleta->valor_aluguel = $data['valor_aluguel'];
                 $bicicleta->descricao = $data['descricao'];
-                $bicicleta->ponto_id = $data['ponto_id'];
-                $bicicleta->quantidades = $data['quantidades'];
                 $bicicleta->imagem = 'http://127.0.0.1:8080/storage/' . $data['imagem'];
+                
+                $pontosDescricoes = [];
+                $quantidades = [];
+                foreach ($data['pontos'] as $pontoData) {
+                    $pontosDescricoes[] = $pontoData['descricao'];
+                    $quantidades[] = $pontoData['pivot']['quantidade'] . '/';
+                }
+                $bicicleta->pontos = implode(', ', $pontosDescricoes);
+                $bicicleta->quantidades = implode(', ', $quantidades);
 
                 return view('bicicleta.visualizar', compact('bicicleta'));
             } else {
@@ -66,6 +84,7 @@ class BicicletaService
             abort(500, 'Erro ao carregar a bicicleta.');
         }
     }
+
 
     public function alugarBicicleta($id)
     {

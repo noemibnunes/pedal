@@ -22,17 +22,15 @@ class Bicicleta extends Model
         'disponibilidade',
         'valor_aluguel',
         'descricao',
-        'quantidades',
         'imagem',
         'user_id',
-        'ponto_id'
     ];
 
     ######################
     # RELACIONAMENTOS
     ######################
-    public function ponto()
+    public function pontos()
     {
-        return $this->belongsTo(Ponto::class, 'ponto_id', 'id');
+        return $this->belongsToMany(Ponto::class, 'bicicleta_ponto')->withPivot('quantidade');
     }
 }

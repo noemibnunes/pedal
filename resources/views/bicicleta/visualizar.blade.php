@@ -20,7 +20,16 @@
           </div>
           <div class="entrega">
             <img src="./img/icones/entrega.svg" alt="">
-            <span>{{ $bicicleta->quantidades }}</span>
+            @php
+            $pontos = explode(',', $bicicleta->pontos);
+            $quantidades = explode(',', $bicicleta->quantidades);
+            @endphp
+            @foreach ($pontos as $index => $ponto)
+            <span>{{ $ponto }}: {{ $quantidades[$index] }}</span>
+            @if (!$loop->last)
+            / 
+            @endif
+            @endforeach
           </div>
         </div>
       </div>

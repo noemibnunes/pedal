@@ -10,7 +10,7 @@ class CartaoService
     public function listarCartoesCadastrados() 
     {
         $user = Auth::user();
-        $cartoes = Cartao::all();
+        $cartoes = Cartao::where('user_id', $user->id)->get();
         return view('cartao.cartao', ['user' => $user, 'cartoes' => $cartoes]);
     }
 
@@ -28,7 +28,10 @@ class CartaoService
 
     public function cadastrarCartao($request) 
     {
+        $user = Auth::user();
+
         Cartao::create([
+           'user_id' => $user->id,
            'nome_titular' => $request->nome_titular,
            'numero_cartao' => $request->numero_cartao,
            'data_validade' => $request->data_validade,
@@ -61,6 +64,7 @@ class CartaoService
     {
         $cartao = Cartao::findOrFail($id);
 
+        $cartao->user_id = Auth::id();
         $cartao->nome_titular = $request->nome_titular;
         $cartao->numero_cartao = $request->numero_cartao;
         $cartao->data_validade = $request->data_validade;
