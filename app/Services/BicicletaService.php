@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Exception;
+use App\Models\Plano;
 use App\Models\Ponto;
 use GuzzleHttp\Client;
 use App\Models\Bicicleta;
@@ -102,5 +103,11 @@ class BicicletaService
         } else {
             abort(500, 'Erro ao alugar a bicicleta.');
         }
+    }
+
+    public function welcome()
+    {
+        $planos = Plano::all(); 
+        return view('welcome', compact('planos')); 
     }
 }

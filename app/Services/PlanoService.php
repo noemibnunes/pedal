@@ -25,4 +25,23 @@ class PlanoService
         }
     }
 
+    public function visualizarPlano($id)
+    {
+        $client = new Client();
+        $response = $client->get("http://127.0.0.1:8080/plano-show/{$id}");
+
+        if ($response->getStatusCode() === 200) {
+            $plano = json_decode($response->getBody()->getContents(), true);
+            return view('plano.plano_show', compact('plano'));
+        } else {
+            abort(500, 'Erro ao carregar o plano.');
+        }
+    }
+
+    public function visualizarTodosPlanos()
+    {
+        $data = $this->listarPlanosDisponiveis();
+        $planos = $data->planos;
+        return view('plano.planos', compact('planos'));
+    }
 }

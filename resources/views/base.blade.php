@@ -22,13 +22,14 @@
 <body>
   <header class="header-bg">
     <div class="header container">
-      <a href="./">
+      <a href="{{ Auth::check() ? route('bicicletas') : route('welcome') }}">
         <img src="{{ asset('img/icones/logo.svg') }}" width="136" height="32" alt="pedal">
       </a>
 
       <nav aria-label="primaria">
           <ul class="header-menu font-1-m cor-0">
               <li><a href="{{ route('bicicletas') }}">Bicicletas</a></li>
+              <li><a href="{{ route('planos-view') }}">Planos</a></li>
               @auth 
                   <li><a href="{{ route('perfil') }}">Meu Perfil</a></li>
                   <li><a href="{{ route('logout') }}">Sair</a></li> 

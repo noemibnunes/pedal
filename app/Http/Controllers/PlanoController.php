@@ -18,4 +18,14 @@ class PlanoController extends Controller
     {
         return $this->planoService->listarPlanosDisponiveis();
     }
+
+    public function show(int $id) 
+    {
+        return $this->planoService->visualizarPlano($id);
+    }
+
+    public function planosView() 
+    {
+        return $this->planoService->visualizarTodosPlanos();
+    }
 }

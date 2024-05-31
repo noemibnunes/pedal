@@ -19,7 +19,8 @@ Route::post('/cadastro-usuario', [UserController::class, 'cadastro'])->name('cad
 Route::post('/login-usuario', [UserController::class, 'login'])->name('login-usuario');
 
 Route::get('/bicicletas', [BicicletaController::class, 'all'])->name('bicicletas');
-Route::get('/', [PlanoController::class, 'all'])->name('planos');
+Route::get('/planos/{id}', [PlanoController::class, 'show'])->name('planos-show');
+Route::get('/planos', [PlanoController::class, 'planosView'])->name('planos-view');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');

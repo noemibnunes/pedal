@@ -13,6 +13,11 @@ class BicicletaController extends Controller
     {
         $this->bicicletaService = $bicicletaService;
     }
+
+    public function welcome() 
+    {
+        return $this->bicicletaService->welcome();
+    }
     
     public function all() 
     {
