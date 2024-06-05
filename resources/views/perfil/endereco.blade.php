@@ -22,6 +22,7 @@
                 <ul class="list-unstyled">
                   <li><a href="{{ route('perfil') }}">dados pessoais</a></li>
                   <li><a href="{{ route('endereco-view') }}">endereço</a></li>
+                  <li><a href="{{ route('aluguel-historico') }}">histórico de alugueis</a></li>
                   <li><a href="{{ route('cartoes-cadastrados') }}">cartões</a></li>
                 </ul>
           </div>

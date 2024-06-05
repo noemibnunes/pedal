@@ -19,11 +19,12 @@
             </div>
             <h3> {{ $user->name}} {{ $user->sobrenome }} </h3> 
             <div class='lista-perfil'>
-                <ul class="list-unstyled">
+              <ul class="list-unstyled">
                   <li><a href="{{ route('perfil') }}">dados pessoais</a></li>
                   <li><a href="{{ route('endereco-view') }}">endereço</a></li>
+                  <li><a href="{{ route('aluguel-historico') }}">histórico de alugueis</a></li>
                   <li><a href="{{ route('cartoes-cadastrados') }}">cartões</a></li>
-                </ul>
+              </ul>
           </div>
         </section>
         <section class="cadastro-formulario" aria-label="Formulário">

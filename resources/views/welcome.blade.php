@@ -113,5 +113,5 @@
             <a class="botao-seguro secundario" href="{{ route('planos-show', $plano->id) }}">Saiba mais</a>
         </div>
     @endfor
-</article>
+  </article>
 @endsection()

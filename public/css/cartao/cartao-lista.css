@@ -1,7 +1,24 @@
+.cartoes-container {
+    max-height: 600px; /* Ajuste conforme necessário */
+}
+
+.scrollable {
+    overflow-y: auto;
+}
+
+.scrollable::-webkit-scrollbar {
+    width: 12px;
+    height: 10px; /* largura da barra de rolagem */
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+    background-color: var(--cor-p3);
+    border-radius: 6px; /* arredondamento dos cantos do polegar */
+}
+
 .cartoes {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .cartao {
@@ -11,18 +28,18 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 20px;
-    
-    h2 {
-        margin-top: 0;
-    }
+}
 
-    p {
-        margin: 10px 0;
-    }
+.cartao h2 {
+    margin-top: 0;
+}
+
+.cartao p {
+    margin: 10px 0;
 }
 
 .form-two input[type="month"],
-select  {
+select {
     font: 400 1rem/1.5 "Roboto", sans-serif;
     background: var(--cor-1);
     border: 1px solid var(--cor-2);
@@ -54,20 +71,20 @@ select:focus {
     margin-top: 15px;
     width: 20px;
     height: 20px;
-  }
-  
-  .btn-cadastro:hover {
+}
+
+.btn-cadastro:hover {
     background-color: var(--cor-p2);
-  }
-  
-  .btn-cadastro img {
+}
+
+.btn-cadastro img {
     position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
+}
 
-  .btn-view {
+.btn-view {
     display: flex;
     justify-content: right;
 }
